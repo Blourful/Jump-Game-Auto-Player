@@ -52,31 +52,42 @@ def play_loop(detector):
         frame = screenshot()
         if frame is None:
             continue
-        
+
         state, score = detector.detect(frame)
-        
+
         ok, score1 = detect_jump(frame, debug=False)
-        if score1<66 and score1>52 and count == 0:
+        if score1<75 and score1>55 and count == 0:
             print("👉 检测到 跳跃")
             print("score1:", score1)
             tap(540, 540)
+            # time.sleep(0.1)
             count+=1
         ok2, score2 = detect_jump2(frame, debug=False)
-        if score2<75 and score2>60 and count==1:
+        if score2<90 and score2>30 and count==1:
             print("👉 检测到 跳跃2")
             print("score2:", score2)
             tap(540, 540)
+            # time.sleep(0.1)
             count-=1
 
         if state == "RESTART":
             break
-        
+
 def restart(detector):
+    while True:
+        frame = screenshot()
+        if frame is None:
+            continue
+
+        state, score = detector.detect(frame)
+
+        if state == "RESTART":
+            break
     print("🔄 重新开始")
-    time.sleep(1)
+    time.sleep(2)
     frame = screenshot()
     tap_ratio(frame, 0.2644, 0.2419)
-   
+    time.sleep(0.5)
 
 
 if __name__ == "__main__":
