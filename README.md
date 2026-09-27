@@ -4,7 +4,7 @@ An auto player for **「此时欢宴」**, a mini-game from the **Arknights: End
 
 Built with **Python, OpenCV, and ADB**.
 
-![Demo](./image.png)
+![Demo](./images/image.png)
 
 ## Features
 
